@@ -1,5 +1,5 @@
 ﻿using System;
-using tabuleiro;
+using JogoTabuleiro;
 
 namespace Xadrez
 {
@@ -7,15 +7,24 @@ namespace Xadrez
     {
         static void Main(string[] args)
         {
-            Tabuleiro tab = new Tabuleiro(8, 8);
+            try
+            {
+                Tabuleiro tab = new Tabuleiro(8, 8);
 
-            tab.PutPeca(new Rei(Cor.Branca, tab), new Posicao(0, 0));
-            tab.PutPeca(new Torre(Cor.Branca, tab), new Posicao(1, 3));
-            tab.PutPeca(new Rainha(Cor.Branca, tab), new Posicao(2, 4));
+                tab.PutPeca(new Rei(Cor.Branca, tab), new Posicao(0, 0));
+                tab.PutPeca(new Torre(Cor.Branca, tab), new Posicao(1, 3));
+                tab.PutPeca(new Rainha(Cor.Branca, tab), new Posicao(0, 3));
 
-            Tela.ImprimirTabuleiro(tab);
+                Tela.ImprimirTabuleiro(tab);
 
-            Console.WriteLine(tab);
+                Console.WriteLine(tab);
+            }
+            catch (TabuleiroException e)
+            {
+                Console.WriteLine("Erro: " + e.Message);
+
+            }
+
         }
     }
 }

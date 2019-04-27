@@ -1,4 +1,4 @@
-﻿namespace tabuleiro
+﻿namespace JogoTabuleiro
 {
     public class Peca
     {
