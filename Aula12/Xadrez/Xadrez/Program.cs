@@ -7,11 +7,15 @@ namespace Xadrez
     {
         static void Main(string[] args)
         {
-            Tabuleiro p = new Tabuleiro(8, 8);
+            Tabuleiro tab = new Tabuleiro(8, 8);
 
-            Tela.ImprimirTabuleiro(p);
+            tab.PutPeca(new Rei(Cor.Branca, tab), new Posicao(0, 0));
+            tab.PutPeca(new Torre(Cor.Branca, tab), new Posicao(1, 3));
+            tab.PutPeca(new Rainha(Cor.Branca, tab), new Posicao(2, 4));
 
-            Console.WriteLine(p);
+            Tela.ImprimirTabuleiro(tab);
+
+            Console.WriteLine(tab);
         }
     }
 }
