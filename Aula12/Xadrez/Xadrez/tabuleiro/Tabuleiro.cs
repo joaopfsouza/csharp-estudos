@@ -13,5 +13,10 @@
 
             Pecas = new Peca[Linhas, Colunas];
         }
+
+        public Peca GetPeca(int linha, int coluna)
+        {
+            return Pecas[linha,coluna];
+        }
     }
 }
