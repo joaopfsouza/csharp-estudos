@@ -1,6 +1,6 @@
 ﻿namespace JogoTabuleiro
 {
-    public class Peca
+    public abstract class Peca
     {
         public Posicao Posicao { get; set; }
         public Cor Cor { get; protected set; }
@@ -15,10 +15,33 @@
             QtdMovimento = 0;
         }
 
+        public bool ExisteMovimentoPossiveis()
+        {
+            bool[,] matrizAux = MovimentosPossiveis();
+            for (int i = 0; i < Tab.Linhas; i++)
+            {
+                for (int j = 0; j < Tab.Colunas; j++)
+                {
+                    if (matrizAux[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         public void IncrementarQtdMovimento()
         {
             QtdMovimento++;
         }
+
+        public bool PodeMoverPara(Posicao posicao)
+        {
+            return MovimentosPossiveis()[posicao.Linha, posicao.Coluna];
+        }
+        public abstract bool[,] MovimentosPossiveis();
     }
 
 

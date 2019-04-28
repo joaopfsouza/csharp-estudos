@@ -11,9 +11,15 @@
             Coluna = coluna;
         }
 
+        public void SetPosicao(int linha, int coluna)
+        {
+            Linha = linha;
+            Coluna = coluna;
+        }
+
         public override string ToString()
         {
-            return $"{Linha}, {Coluna}";
+            return $"{Linha},{Coluna}";
         }
     }
 }

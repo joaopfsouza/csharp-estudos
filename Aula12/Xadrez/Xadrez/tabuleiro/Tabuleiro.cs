@@ -60,7 +60,7 @@
 
         public bool PosicaoValida(Posicao posicao)
         {
-            if (posicao.Coluna >= Linhas || posicao.Coluna >= Colunas || posicao.Linha < 0 || posicao.Coluna < 0)
+            if (posicao.Linha >= Linhas || posicao.Coluna >= Colunas || posicao.Linha < 0 || posicao.Coluna < 0)
             {
                 return false;
             }
