@@ -7,7 +7,23 @@ namespace Xadrez
     {
         static void Main(string[] args)
         {
-            TabuleiroInicial();
+            PartidaDeXadrez partida = new PartidaDeXadrez();
+
+            while (!partida.Terminada)
+            {
+                Console.Clear();
+                Tela.ImprimirTabuleiro(partida.Tab);
+
+                Console.WriteLine();
+                Console.Write("Origem: ");
+                Posicao origem = Tela.ReadPosicaoXadrez().ConvertPosicao();
+
+                Console.Write("Destino: ");
+                Posicao destino = Tela.ReadPosicaoXadrez().ConvertPosicao();
+
+                partida.ExecutaMovimento(origem, destino);
+            }
+
 
         }
 
@@ -36,7 +52,7 @@ namespace Xadrez
 
                 Tela.ImprimirTabuleiro(tab);
 
-               
+
             }
             catch (TabuleiroException e)
             {
