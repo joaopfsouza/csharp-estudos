@@ -6,7 +6,6 @@ namespace JogoTabuleiro
     {
         public TabuleiroException(string message) : base(message)
         {
-
         }
     }
 }
