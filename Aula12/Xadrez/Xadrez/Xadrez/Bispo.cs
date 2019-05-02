@@ -2,9 +2,9 @@
 
 namespace Xadrez
 {
-    class Rainha : Peca
+    class Bispo : Peca
     {
-        public Rainha(Cor cor, Tabuleiro tab) : base(cor, tab)
+        public Bispo(Cor cor, Tabuleiro tab) : base(cor, tab)
         {
         }
 
@@ -32,6 +32,7 @@ namespace Xadrez
 
             Posicao posicaoAux = new Posicao(0, 0);
 
+            //NO
             posicaoAux.SetPosicao(Posicao.Linha - 1, Posicao.Coluna - 1);
             while (VerificaMovimento(posicaoAux))
             {
@@ -55,6 +56,7 @@ namespace Xadrez
                 posicaoAux.SetPosicao(posicaoAux.Linha - 1, posicaoAux.Coluna + 1);
             }
 
+            //SE
             posicaoAux.SetPosicao(Posicao.Linha + 1, Posicao.Coluna + 1);
             while (VerificaMovimento(posicaoAux))
             {
@@ -66,6 +68,7 @@ namespace Xadrez
                 posicaoAux.SetPosicao(posicaoAux.Linha + 1, posicaoAux.Coluna + 1);
             }
 
+            //SO
             posicaoAux.SetPosicao(Posicao.Linha + 1, Posicao.Coluna - 1);
             while (VerificaMovimento(posicaoAux))
             {
@@ -78,63 +81,14 @@ namespace Xadrez
             }
 
 
-            //Acima
-            posicaoAux.SetPosicao(Posicao.Linha - 1, Posicao.Coluna);
-            while (VerificaMovimento(posicaoAux))
-            {
-                matrizMovimento[posicaoAux.Linha, posicaoAux.Coluna] = true;
-                if (FimMovimento(posicaoAux))
-                {
-                    break;
-                }
-                posicaoAux.Linha--;
-            }
-
-            //Abaixo
-            posicaoAux.SetPosicao(Posicao.Linha + 1, Posicao.Coluna);
-            while (VerificaMovimento(posicaoAux))
-            {
-                matrizMovimento[posicaoAux.Linha, posicaoAux.Coluna] = true;
-                if (FimMovimento(posicaoAux))
-                {
-                    break;
-                }
-                posicaoAux.Linha++;
-            }
-
-            //Direita
-            posicaoAux.SetPosicao(Posicao.Linha, Posicao.Coluna + 1);
-            while (VerificaMovimento(posicaoAux))
-            {
-                matrizMovimento[posicaoAux.Linha, posicaoAux.Coluna] = true;
-                if (FimMovimento(posicaoAux))
-                {
-                    break;
-                }
-                posicaoAux.Coluna++;
-            }
-
-            //Esquerda
-            posicaoAux.SetPosicao(Posicao.Linha, Posicao.Coluna - 1);
-            while (VerificaMovimento(posicaoAux))
-            {
-                matrizMovimento[posicaoAux.Linha, posicaoAux.Coluna] = true;
-                if (FimMovimento(posicaoAux))
-                {
-                    break;
-                }
-                posicaoAux.Coluna--;
-            }
-
-
-
             return matrizMovimento;
+
 
         }
 
         public override string ToString()
         {
-            return "D";
+            return "B";
         }
     }
 }
