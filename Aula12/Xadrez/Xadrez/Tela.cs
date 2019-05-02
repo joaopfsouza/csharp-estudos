@@ -17,12 +17,20 @@ namespace Xadrez
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.Turno);
             Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
-           
 
-            if (partida.xeque)
+            if (!partida.Terminada)
             {
-                Console.WriteLine("Xeque");
-                Console.WriteLine();
+
+                if (partida.xeque)
+                {
+                    Console.WriteLine("Xeque");
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine("XEQUEMATE!");
+                Console.WriteLine("Vencedor: " + partida.JogadorAtual);
             }
 
         }
@@ -41,7 +49,7 @@ namespace Xadrez
             Console.ForegroundColor = ConsoleColor.Yellow;
             ImprimirConjunto(partida.PecasCapturadasCor(Cor.Preta));
             Console.ForegroundColor = aux;
-            
+
 
             Console.WriteLine();
         }

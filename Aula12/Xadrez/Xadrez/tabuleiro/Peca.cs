@@ -46,6 +46,7 @@
         {
             return MovimentosPossiveis()[posicao.Linha, posicao.Coluna];
         }
+
         public abstract bool[,] MovimentosPossiveis();
     }
 
