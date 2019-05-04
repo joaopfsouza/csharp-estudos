@@ -4,8 +4,11 @@ namespace Xadrez
 {
     class Rei : Peca
     {
-        public Rei(Cor cor, Tabuleiro tab) : base(cor, tab)
+        public PartidaDeXadrez Partida { get; set; }
+
+        public Rei(Cor cor, Tabuleiro tab, PartidaDeXadrez partida) : base(cor, tab)
         {
+            Partida = partida;
         }
 
         private bool PodeMover(Posicao posicao)
@@ -21,6 +24,11 @@ namespace Xadrez
             return Tab.PosicaoValida(posicao) && PodeMover(posicao);
         }
 
+        private bool TesteTorreParaRoque(Posicao posicao)
+        {
+            Peca peca = Tab.GetPeca(posicao);
+            return peca != null && peca is Torre && peca.Cor == Cor && peca.QtdMovimento == 0;
+        }
 
         public override bool[,] MovimentosPossiveis()
         {
@@ -70,7 +78,7 @@ namespace Xadrez
             }
 
             //Esquerda
-            posicaoAux.SetPosicao(Posicao.Linha + 1, Posicao.Coluna - 1);
+            posicaoAux.SetPosicao(Posicao.Linha, Posicao.Coluna - 1);
             if (VerificaMovimento(posicaoAux))
             {
                 matrizMovimento[posicaoAux.Linha, posicaoAux.Coluna] = true;
@@ -80,6 +88,38 @@ namespace Xadrez
             if (VerificaMovimento(posicaoAux))
             {
                 matrizMovimento[posicaoAux.Linha, posicaoAux.Coluna] = true;
+            }
+
+            // #jogada especial roque pequeno
+            if (QtdMovimento == 0 && !Partida.Xeque)
+            {
+                Posicao posicaoTorre = new Posicao(Posicao.Linha, Posicao.Coluna + 3);
+
+                if (TesteTorreParaRoque(posicaoTorre))
+                {
+                    Posicao posicaoCasa1 = new Posicao(Posicao.Linha, Posicao.Coluna + 1);
+                    Posicao posicaoCasa2 = new Posicao(Posicao.Linha, Posicao.Coluna + 2);
+
+                    if (Tab.GetPeca(posicaoCasa1) == null && Tab.GetPeca(posicaoCasa2) == null)
+                    {
+                        matrizMovimento[Posicao.Linha, Posicao.Coluna + 2] = true;
+                    }
+                }
+
+                // #jogada especial roque grande
+                posicaoTorre.SetPosicao(Posicao.Linha, Posicao.Coluna - 4);
+
+                if (TesteTorreParaRoque(posicaoTorre))
+                {
+                    Posicao posicaoCasa1 = new Posicao(Posicao.Linha, Posicao.Coluna - 1);
+                    Posicao posicaoCasa2 = new Posicao(Posicao.Linha, Posicao.Coluna - 2);
+                    Posicao posicaoCasa3 = new Posicao(Posicao.Linha, Posicao.Coluna - 3);
+
+                    if (Tab.GetPeca(posicaoCasa1) == null && Tab.GetPeca(posicaoCasa2) == null && Tab.GetPeca(posicaoCasa3) == null)
+                    {
+                        matrizMovimento[Posicao.Linha, Posicao.Coluna - 2] = true;
+                    }
+                }
             }
 
             return matrizMovimento;

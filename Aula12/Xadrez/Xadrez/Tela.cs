@@ -21,7 +21,7 @@ namespace Xadrez
             if (!partida.Terminada)
             {
 
-                if (partida.xeque)
+                if (partida.Xeque)
                 {
                     Console.WriteLine("Xeque");
                     Console.WriteLine();

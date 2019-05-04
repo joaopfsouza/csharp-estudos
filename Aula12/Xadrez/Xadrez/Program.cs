@@ -69,11 +69,11 @@ namespace Xadrez
             {
                 Tabuleiro tab = new Tabuleiro(8, 8);
 
-                tab.PutPeca(new Rei(Cor.Branca, tab), new Posicao(0, 0));
+                //tab.PutPeca(new Rei(Cor.Branca, tab,pa), new Posicao(0, 0));
                 tab.PutPeca(new Torre(Cor.Branca, tab), new Posicao(1, 3));
-                tab.PutPeca(new Rainha(Cor.Branca, tab), new Posicao(0, 3));
+               // tab.PutPeca(new Rainha(Cor.Branca, tab), new Posicao(0, 3));
 
-                tab.PutPeca(new Rei(Cor.Preta, tab), new Posicao(5, 0));
+                //tab.PutPeca(new Rei(Cor.Preta, tab), new Posicao(5, 0));
                 tab.PutPeca(new Torre(Cor.Preta, tab), new Posicao(6, 3));
                 tab.PutPeca(new Rainha(Cor.Preta, tab), new Posicao(7, 3));
 
