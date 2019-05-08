@@ -25,13 +25,13 @@ namespace ExemploSemInterface
             Console.Write("Enter price per day: ");
             double priceDay = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            RentalServices rentalService = new RentalServices (priceHour, priceDay);
+            RentalServices rentalService = new RentalServices(priceHour, priceDay, new BrazilTaxService());
 
             rentalService.ProcessInvoice(carRental);
 
             Console.WriteLine("INVOICE: ");
             Console.WriteLine(carRental.Invoice);
-            
+
         }
     }
 }
