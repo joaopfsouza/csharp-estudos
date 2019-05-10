@@ -24,7 +24,7 @@ namespace EX01
             int numberInstallments = int.Parse(Console.ReadLine());
 
             Contract contract = new Contract(contractNumber,contractDate, contractValue);
-            ContractProcessingService contractProcessing = new ContractProcessingService(numberInstallments, new PayPalTaxService(1, 2));
+            ContractProcessingService contractProcessing = new ContractProcessingService(numberInstallments, new PayPalTaxService());
 
             contractProcessing.CalculateInstallments(contract);
 

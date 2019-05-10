@@ -2,6 +2,8 @@
 {
     internal interface IPaymentTaxService
     {
-        double CalculateAmoutWithTax(double amount, int mounth);
+        double Interest(double amount, int mounths);
+        double PaymentFee(double amount);
+       
     }
 }

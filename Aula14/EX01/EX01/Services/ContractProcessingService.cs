@@ -23,11 +23,14 @@ namespace EX01.Services
         {
             double amountBase = contract.TotalValue / NumberInstallment;
             double amountCalculate = 0;
+            double amountintermediary = 0;
             DateTime dateCalculate = new DateTime();
 
             for (int month = 1; month <= NumberInstallment; month++)
             {
-                amountCalculate = _paymentTaxService.CalculateAmoutWithTax(amountBase, month);
+                amountintermediary = amountBase + _paymentTaxService.Interest(amountBase, month);
+                amountCalculate = amountintermediary + _paymentTaxService.PaymentFee(amountintermediary);
+
                 dateCalculate = contract.Date.AddMonths(month);
 
                 contract.Installments.Add(new Installment(dateCalculate, amountCalculate));

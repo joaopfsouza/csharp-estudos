@@ -6,18 +6,18 @@ namespace EX01.Services
 {
     class PayPalTaxService : IPaymentTaxService
     {
-        public double SimpleTax { get; }
-        public double FeeTax { get; set; }
 
-        public PayPalTaxService(double simpleTax, double feeTax)
+        private const double feePercentage = 0.02;
+        private const double monthlyInterest = 0.01;
+
+        public double Interest(double amount, int mounths)
         {
-            SimpleTax = simpleTax / 100.00;
-            FeeTax = feeTax / 100.00;
+            return amount * mounths * monthlyInterest;
         }
 
-        public double CalculateAmoutWithTax(double amount, int mounth)
+        public double PaymentFee(double amount)
         {
-            return amount * (1 + SimpleTax * mounth) *(1+ FeeTax);
+            return amount * feePercentage;
         }
     }
 }
